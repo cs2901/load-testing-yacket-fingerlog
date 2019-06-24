@@ -8,13 +8,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TranslatorImplTest {
-    Translator translator;
+
+    TranslatorImpl translator;
     LanguageP from;
     LanguageP to;
 
     @BeforeMethod
     public void setUp() throws Exception {
-        translator = new TranslatorImpl();
+        translator = TranslatorImpl.getInstance();
         from = new LanguageP("EN", "English");
         to = new LanguageP("ES", "Spanish");
     }

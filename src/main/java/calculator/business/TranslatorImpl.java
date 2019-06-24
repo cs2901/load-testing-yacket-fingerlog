@@ -7,34 +7,41 @@ import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
 import java.util.HashMap;
+import java.util.Map;
 //import java.util.List;
 
 
 public class TranslatorImpl implements Translator {
+
     public Translate translate;
+
+    private static TranslatorImpl instance;
 
     private static final String key = "AIzaSyBJ01MsImGXDFSe2WdGMdTe-CvevbTUPoc";
 
-    public TranslatorImpl()
-    {
+    private TranslatorImpl() {
         translate = TranslateOptions.newBuilder().setApiKey(key).build().getService();
+    }
+
+    synchronized public static TranslatorImpl getInstance() {
+        if (instance == null) {
+            instance = new TranslatorImpl();
+        }
+
+        return instance;
     }
 
     @Override
     public String translate(LanguageP from, LanguageP to, String text) {
 
-        HashMap<String, String> translateMap = new HashMap<String, String>();
-
-        if(translateMap.get(text)==null) {
-            Translation translation = translate.translate(
+        Translation translation = translate.translate(
                 text,
                 TranslateOption.sourceLanguage(from.getId()),
                 TranslateOption.targetLanguage(to.getId()));
 
-            translateMap.put(text,translation.getTranslatedText());
-        }
+        String translated = translation.getTranslatedText();
 
-        return translateMap.get(text);
+        return translated;
     }
 }
 
