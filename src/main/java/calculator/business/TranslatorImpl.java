@@ -5,6 +5,8 @@ import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.Translate.TranslateOption;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
+
+import java.util.HashMap;
 //import java.util.List;
 
 
@@ -21,14 +23,18 @@ public class TranslatorImpl implements Translator {
     @Override
     public String translate(LanguageP from, LanguageP to, String text) {
 
-    
+        HashMap<String, String> translateMap = new HashMap<String, String>();
 
-        Translation translation = translate.translate(
+        if(translateMap.get(text)==null) {
+            Translation translation = translate.translate(
                 text,
                 TranslateOption.sourceLanguage(from.getId()),
                 TranslateOption.targetLanguage(to.getId()));
 
-        return translation.getTranslatedText();
+            translateMap.put(text,translation.getTranslatedText());
+        }
+
+        return translateMap.get(text);
     }
 }
 
