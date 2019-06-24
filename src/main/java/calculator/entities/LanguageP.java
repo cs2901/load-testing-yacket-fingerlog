@@ -1,10 +1,10 @@
 package calculator.entities;
 
-public class Language {
+public class LanguageP {
     private String id;
     private String name;
 
-    public Language(String id, String name) {
+    public LanguageP(String id, String name) {
         this.id = id;
         this.name = name;
     }
