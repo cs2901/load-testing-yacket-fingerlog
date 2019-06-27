@@ -36,7 +36,7 @@
             margin-top: 30px;
             margin-left: -10px;
         }
-        .to{
+        .toAdd{
             margin-left: 100px;
             margin-top: 20px;
         }
@@ -58,28 +58,28 @@
     <div class="col s12 m5">
         <div class="cardName card-panel">
             <div class="row">
-                <form class="col s12" action="\translate">
+                <form class="col s12" action="/translate/{from}/{to}/{{text}" method="post">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="palabra" type="text" class="validate">
-                            <label for="palabra">Palabra a traducir</label>
+                            <input id="text" type="text" class="validate">
+                            <label for="text">Palabra a traducir</label>
                         </div>
                         <div class="input-field col s12">
-                            <select>
+                            <select id="from" m>
                                 <option value="" disabled selected>Choose your option</option>
                                 <option value="españolI">Español</option>
-                                <option value="inglesI">Inglés</option>
+                                <option value="inglesI">Inglés</option>type="submit"
                                 <option value="portuguesI">Portugues</option>
                                 <option value="francesI">Frances</option>
                                 <option value="italianoI">Italiano</option>
                             </select>
                             <label>Lenguaje de entrada: </label>
                             <div class="division"> </div>
-                            <div class="to"> TO: </div>
+                            <div class="toAdd"> TO: </div>
                             <div class="division"> </div>
                         </div>
                         <div class="input-field col s12">
-                            <select>
+                            <select id="to" m>
                                 <option value="" disabled selected>Choose your option</option>
                                 <option value="españolS">Español</option>
                                 <option value="inglesS">Inglés</option>
@@ -88,8 +88,11 @@
                                 <option value="italianoS">Italiano</option>
                             </select>
                         </div>
-                        <h4 id="textoTraducido "> Texto traducido: {{Traduccion}} </h4>
                     </div>
+
+                    <button type="submit" class="waves-effect waves-light btn" >Traducir</button>
+
+                    <h5 id="textoTraducido "> Texto traducido:  </h5>
                 </form>
             </div>
 
