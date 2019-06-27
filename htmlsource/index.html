@@ -5,15 +5,19 @@
     <title>Translate FinggerLog</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
+    <script   src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <style>
        body{
            background-color: #dce775;
+           font-family: 'Quicksand', sans-serif;
        }
         #navBar{
             background-color: #e6ee9c;
+        }
+        #nameOf{
+            margin-left: 650px;
         }
         .cardName{
             height: 600px;
@@ -24,11 +28,28 @@
             -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         }
+        .division{
+            height: 3px;
+            width: 350px;
+            background-color: black;
+            border-color: black;
+            margin-top: 30px;
+            margin-left: -10px;
+        }
+        .to{
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+
+        #textoTraducido{
+            margin-left: 30px;
+
+        }
     </style>
 <body>
 <nav>
     <div class="nav-wrapper" id="navBar">
-        <a href="#"  class="brand-logo col s7">Yape Business</a>
+        <a href="#"  class="brand-logo col s7" id="nameOf">Yape Business</a>
     </div>
 </nav>
 
@@ -37,13 +58,37 @@
     <div class="col s12 m5">
         <div class="cardName card-panel">
             <div class="row">
-                <form class="col s12">
+                <form class="col s12" action="\translate">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Palabra a traducir</label>
-                            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                            <input id="palabra" type="text" class="validate">
+                            <label for="palabra">Palabra a traducir</label>
                         </div>
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="españolI">Español</option>
+                                <option value="inglesI">Inglés</option>
+                                <option value="portuguesI">Portugues</option>
+                                <option value="francesI">Frances</option>
+                                <option value="italianoI">Italiano</option>
+                            </select>
+                            <label>Lenguaje de entrada: </label>
+                            <div class="division"> </div>
+                            <div class="to"> TO: </div>
+                            <div class="division"> </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="españolS">Español</option>
+                                <option value="inglesS">Inglés</option>
+                                <option value="portuguesS">Portugues</option>
+                                <option value="francesS">Frances</option>
+                                <option value="italianoS">Italiano</option>
+                            </select>
+                        </div>
+                        <h4 id="textoTraducido "> Texto traducido: {{Traduccion}} </h4>
                     </div>
                 </form>
             </div>
@@ -55,5 +100,12 @@
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="js/materialize.min.js">
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
+</script>
+
 </body>
 </html>
